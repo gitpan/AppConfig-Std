@@ -1,6 +1,16 @@
 
 				ChangeLog
 
+1.5 neilb 19-jan-2002
+
+	Added a basic test-suite. Tests all switches apart
+	from -help. The test-suite works by comparing the
+	output of a test script with expected output.
+	The output of -help will be formatted slightly
+	differently on different systems (pod2usage() uses
+	perldoc to format the output), so the comparison
+	is likely to fail.
+
 1.4 neilb 15-jan-2002
 
 	Updated call to pod2usage() - the API has changed.

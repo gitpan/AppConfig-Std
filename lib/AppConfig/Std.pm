@@ -18,12 +18,13 @@
 #
 # Written by Neil Bowers <neil@bowers.com>
 #
+# Copyright (C) 2002 Neil Bowers.
 # Copyright (C) 1998-2001 Canon Research Centre Europe Ltd.
 # All Rights Reserved.
 #
 #-----------------------------------------------------------------------
 #
-# $Id: Std.pm,v 1.4 2002/01/11 03:48:48 neilb Exp $
+# $Id: Std.pm,v 1.5 2002/01/13 05:48:11 neilb Exp $
 #
 #=======================================================================
 
@@ -35,7 +36,7 @@ use AppConfig;
 
 use vars qw(@ISA $VERSION);
 
-$VERSION = sprintf("%d.%02d", q$Revision: 1.4 $ =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q$Revision: 1.5 $ =~ /(\d+)\.(\d+)/);
 @ISA     = qw(AppConfig);
 
 #=======================================================================
@@ -206,7 +207,7 @@ This assumes that you have defined C<$VERSION> in your script
 with something like the following:
 
     use vars qw( $VERSION );
-    $VERSION = sprintf("%d.%02d", q$Revision: 1.4 $ =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf("%d.%02d", q$Revision: 1.5 $ =~ /(\d+)\.(\d+)/);
 
 The script will exit with an exit value of 0.
 
@@ -236,10 +237,6 @@ or other modifications. Things currently being mulled:
 
 Support brief switches, such as B<-h> as well as B<-help>.
 This could be a config option for the constructor.
-
-=item *
-
-Test-suite.
 
 =item *
 

@@ -20,6 +20,7 @@ To install this module, you should just have to run the following:
 
 	% perl Makefile.PL
 	% make
+	% make test
 	% make install
 
 I'd be happy to hear of any suggestions for improving this module.

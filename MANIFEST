@@ -3,3 +3,5 @@ Makefile.PL
 README
 MANIFEST
 ChangeLog
+t/basic.t
+t/testscript.pl
