@@ -1,6 +1,18 @@
 
 				ChangeLog
 
+1.07 neilb 03-jul-2002
+
+	We now over-ride the getopt() method, and handle the
+	standard options if getopt() is used rather than args().
+	Change based on a patch from Martin Bloecker.
+
+	Added a set of tests which exercise the getopt() method.
+
+	Renamed the show_version() function to _show_version(),
+	to signify its private status.
+
+
 1.06 neilb 09-mar-2002
 
 	The testsuite was try to invoke perl on the test script,
@@ -9,6 +21,7 @@
 	with -Iblib/lib when running the test, so that it actually
 	pulls in the version you think you're testing :-)
 	Thanks to Ed Santiago for both of these.
+
 
 1.05 neilb 19-jan-2002
 

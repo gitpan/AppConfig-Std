@@ -5,3 +5,5 @@ MANIFEST
 ChangeLog
 t/basic.t
 t/testscript.pl
+t/getopt.t
+t/getscript.pl

@@ -1,8 +1,8 @@
 #!./perl
 #
-# basic.t - basic tests for AppConfig::Std
+# basic.t - tests for getopt() method of AppConfig::Std
 #
-# the tests all use testscript.pl
+# the tests all use getscript.pl
 #
 
 my @expected;
@@ -34,7 +34,7 @@ print "1..", int(@expected), "\n";
 for ($i = 1; $i <= int(@expected); ++$i)
 {
     $args = $expected[$i-1]->[0];
-    $output = `$^X -Iblib/lib t/testscript.pl $args 2>&1`;
+    $output = `$^X -Iblib/lib t/getscript.pl $args 2>&1`;
     if ($output eq $expected[$i-1]->[1]) {
 	print "ok $i\n";
     } else {
@@ -47,73 +47,73 @@ exit 0;
 
 __DATA__
 ARGS:
-Start of testscript.pl [AppConfig::Std 1.07]
-End of testscript.pl
+Start of getscript.pl [AppConfig::Std 1.07]
+End of getscript.pl
 ####
 ARGS: -version
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 1.0
 ####
 ARGS: -verbose
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 Verbose output enabled
-End of testscript.pl
+End of getscript.pl
 ####
 ARGS: -debug
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 Debug output enabled
-End of testscript.pl
+End of getscript.pl
 ####
 ARGS: -verbose -debug
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 Verbose output enabled
 Debug output enabled
-End of testscript.pl
+End of getscript.pl
 ####
 ARGS: -foobar
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 Foobar flag ON
-End of testscript.pl
+End of getscript.pl
 ####
 ARGS: -foobar -verbose -debug
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 Verbose output enabled
 Debug output enabled
 Foobar flag ON
-End of testscript.pl
+End of getscript.pl
 ####
 ARGS: -color red
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 A color of red was given
-End of testscript.pl
+End of getscript.pl
 ####
 ARGS: -color
-Start of testscript.pl [AppConfig::Std 1.07]
--color expects an argument
-End of testscript.pl
+Start of getscript.pl [AppConfig::Std 1.07]
+Option color requires an argument
+End of getscript.pl
 ####
 ARGS: -color blue -foobar -verbose -debug
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 Verbose output enabled
 Debug output enabled
 Foobar flag ON
 A color of blue was given
-End of testscript.pl
+End of getscript.pl
 ####
 ARGS: -country
-Start of testscript.pl [AppConfig::Std 1.07]
--country expects an argument
-End of testscript.pl
+Start of getscript.pl [AppConfig::Std 1.07]
+Option country requires an argument
+End of getscript.pl
 ####
 ARGS: -country Sweden
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 The country was set to Sweden.
-End of testscript.pl
+End of getscript.pl
 ####
 ARGS: -help
-Start of testscript.pl [AppConfig::Std 1.07]
+Start of getscript.pl [AppConfig::Std 1.07]
 Usage:
-      testscript.pl [ -version | -debug | -verbose | -doc | -help ]
+      getscript.pl [ -version | -debug | -verbose | -doc | -help ]
                     [ -color C | -country C | -foobar ]
 
 Options:
@@ -127,15 +127,15 @@ Options:
         Turn on the foobar flag.
 
     -doc
-        Display the full documentation for testscript.pl.
+        Display the full documentation for getscript.pl.
 
     -verbose or -v
-        Display verbose information as testscript.pl runs.
+        Display verbose information as getscript.pl runs.
 
     -version
-        Display the version of testscript.pl.
+        Display the version of getscript.pl.
 
     -debug
-        Display debugging information as testscript.pl runs.
+        Display debugging information as getscript.pl runs.
 
 ####

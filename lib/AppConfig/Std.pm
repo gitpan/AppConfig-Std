@@ -24,7 +24,7 @@
 #
 #-----------------------------------------------------------------------
 #
-# $Id: Std.pm,v 1.6 2002/03/06 08:24:34 neilb Exp $
+# $Id: Std.pm,v 1.7 2002/07/02 18:18:37 neilb Exp $
 #
 #=======================================================================
 
@@ -36,7 +36,7 @@ use AppConfig;
 
 use vars qw(@ISA $VERSION);
 
-$VERSION = sprintf("%d.%02d", q$Revision: 1.6 $ =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q$Revision: 1.7 $ =~ /(\d+)\.(\d+)/);
 @ISA     = qw(AppConfig);
 
 #=======================================================================
@@ -73,6 +73,7 @@ sub new
     return $self;
 }
 
+
 #=======================================================================
 #
 # args() - parse command-line arguments (@ARGV)
@@ -97,34 +98,86 @@ sub args
     #-------------------------------------------------------------------
     # If the command-line was successfully parsed (returned TRUE),
     # then check for the standard command-line switches.
-    # We only load Pod::Usage if we're gonna use it.
-    # Because we're require'ing, the functions don't get exported
-    # to us, hence the explicit namespace reference.
     #-------------------------------------------------------------------
     if ($result)
     {
-        require Pod::Usage if $self->doc || $self->help;
-        Pod::Usage::pod2usage({-verbose => 2, -exitval => 0}) if $self->doc();
-        Pod::Usage::pod2usage({-verbose => 1, -exitval => 0}) if $self->help();
-        show_version() if $self->version();
+	$self->_handle_std_opts();
     }
 
     return $result;
 }
 
+
 #=======================================================================
 #
-# show_version()
+# getopt() - parse command-line arguments (@ARGV)
+#
+# We over-ride the getopt() method, to handle the -doc, -help
+# and -version command-line switches.
+#
+#=======================================================================
+sub getopt
+{
+    my $self = shift;
+    my $ref  = shift;
+
+    my $result;
+
+
+    #-------------------------------------------------------------------
+    # Use AppConfig's getopt() method to parse the command-line.
+    #-------------------------------------------------------------------
+    $result = $self->SUPER::getopt($ref);
+
+    #-------------------------------------------------------------------
+    # If the command-line was successfully parsed (returned TRUE),
+    # then check for the standard command-line switches.
+    #-------------------------------------------------------------------
+    if ($result)
+    {
+	$self->_handle_std_opts();
+    }
+
+    return $result;
+}
+
+
+#=======================================================================
+#
+# _handle_std_opts() - handle the standard options defined by us
+#
+#=======================================================================
+sub _handle_std_opts
+{
+    my $self = shift;
+
+
+    #-------------------------------------------------------------------
+    # We only load Pod::Usage if we're gonna use it.
+    # Because we're require'ing, the functions don't get exported
+    # to us, hence the explicit namespace reference.
+    #-------------------------------------------------------------------
+    require Pod::Usage if $self->doc || $self->help;
+    Pod::Usage::pod2usage({-verbose => 2, -exitval => 0}) if $self->doc();
+    Pod::Usage::pod2usage({-verbose => 1, -exitval => 0}) if $self->help();
+    _show_version() if $self->version();
+}
+
+
+#=======================================================================
+#
+# _show_version()
 #
 # Display the version number of the script. This assumes that
 # the invoking script has defined $VERSION.
 #
 #=======================================================================
-sub show_version
+sub _show_version
 {
     print "$main::VERSION\n";
     exit 0;
 }
+
 
 1;
 
@@ -207,7 +260,7 @@ This assumes that you have defined C<$VERSION> in your script
 with something like the following:
 
     use vars qw( $VERSION );
-    $VERSION = sprintf("%d.%02d", q$Revision: 1.6 $ =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf("%d.%02d", q$Revision: 1.7 $ =~ /(\d+)\.(\d+)/);
 
 The script will exit with an exit value of 0.
 
