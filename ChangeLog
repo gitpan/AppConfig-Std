@@ -1,6 +1,12 @@
 
 				ChangeLog
 
+1.4 neilb 15-jan-2002
+
+	Updated call to pod2usage() - the API has changed.
+
+	Minor improvements to documentation.
+
 1.3 neilb 26-feb-2001
 
 	Tied up the documentation; eg updated references to CPAN.

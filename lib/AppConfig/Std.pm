@@ -2,7 +2,7 @@
 #
 # AppConfig::Std - subclass of AppConfig to provide standard tool config
 #
-# This is a perl 5 module which implements a specialisation of
+# This is a perl module which implements a specialisation of
 # Andy Wardley's AppConfig module. It basically provides five standard
 # command-line arguments:
 #
@@ -16,28 +16,26 @@
 # Pod::Usage module. I wrote this module because I was cutting &
 # pasting code between scripts.
 #
-# Written by Neil Bowers <neilb@cre.canon.co.uk>
+# Written by Neil Bowers <neil@bowers.com>
 #
 # Copyright (C) 1998-2001 Canon Research Centre Europe Ltd.
 # All Rights Reserved.
 #
 #-----------------------------------------------------------------------
 #
-# $Id: Std.pm,v 1.3 2001/02/27 13:21:38 neilb Exp $
+# $Id: Std.pm,v 1.4 2002/01/11 03:48:48 neilb Exp $
 #
 #=======================================================================
-
-require 5.004;
 
 package AppConfig::Std;
 use strict;
 
 use AppConfig;
-use Pod::Usage;
+# we also make use of Pod::Usage, but require it if needed
 
 use vars qw(@ISA $VERSION);
 
-$VERSION = sprintf("%d.%02d", q$Revision: 1.3 $ =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q$Revision: 1.4 $ =~ /(\d+)\.(\d+)/);
 @ISA     = qw(AppConfig);
 
 #=======================================================================
@@ -98,12 +96,16 @@ sub args
     #-------------------------------------------------------------------
     # If the command-line was successfully parsed (returned TRUE),
     # then check for the standard command-line switches.
+    # We only load Pod::Usage if we're gonna use it.
+    # Because we're require'ing, the functions don't get exported
+    # to us, hence the explicit namespace reference.
     #-------------------------------------------------------------------
     if ($result)
     {
-        pod2usage(verbose => 2, exitval => 0) if $self->doc();
-        pod2usage(verbose => 1, exitval => 0) if $self->help();
-        show_version()                        if $self->version();
+        require Pod::Usage if $self->doc || $self->help;
+        Pod::Usage::pod2usage({-verbose => 2, -exitval => 0}) if $self->doc();
+        Pod::Usage::pod2usage({-verbose => 1, -exitval => 0}) if $self->help();
+        show_version() if $self->version();
     }
 
     return $result;
@@ -148,9 +150,9 @@ AppConfig::Std - subclass of AppConfig which provides standard options
 
 =head1 DESCRIPTION
 
-B<AppConfig::Std> is a Perl5 module which provides a set of
+B<AppConfig::Std> is a Perl module which provides a set of
 standard configuration variables and command-line switches.
-It is implemented as a subclass of AppConfig, which provides
+It is implemented as a subclass of AppConfig; AppConfig provides
 a general mechanism for handling global configuration variables.
 
 The features provided by AppConfig::Std are:
@@ -160,7 +162,9 @@ The features provided by AppConfig::Std are:
 =item *
 
 Standard command-line arguments: -help, -doc, -version,
--verbose, and -debug.
+-verbose, and -debug. AppConfig::Std handles the -help, -doc,
+and -version switches for you, so you don't need to duplicate
+that code in all of your scripts.
 These are described below.
 
 =item *
@@ -202,7 +206,7 @@ This assumes that you have defined C<$VERSION> in your script
 with something like the following:
 
     use vars qw( $VERSION );
-    $VERSION = sprintf("%d.%02d", q$Revision: 1.3 $ =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf("%d.%02d", q$Revision: 1.4 $ =~ /(\d+)\.(\d+)/);
 
 The script will exit with an exit value of 0.
 
@@ -231,6 +235,7 @@ or other modifications. Things currently being mulled:
 =item *
 
 Support brief switches, such as B<-h> as well as B<-help>.
+This could be a config option for the constructor.
 
 =item *
 
@@ -290,7 +295,7 @@ which is available from CPAN:
 
 Brad Appleton's module for extracting usage information out
 of a file's pod. This is used for the B<-doc> and B<-help> switches.
-Available from CPAN:
+Available from CPAN as part of the PodParser distribution:
 
     http://www.cpan.org/modules/by-module/Pod/
 
@@ -309,9 +314,11 @@ AppConfig::Std uses Pod::Usage, which assumes well-formed pod.
 
 =head1 AUTHOR
 
-Neil Bowers E<lt>neilb@cre.canon.co.ukE<gt>
+Neil Bowers E<lt>neil@bowers.comE<gt>
 
 =head1 COPYRIGHT
+
+Copyright (c) 2002 Neil Bowers.
 
 Copyright (c) 1998-2001 Canon Research Centre Europe. All rights reserved.
 
