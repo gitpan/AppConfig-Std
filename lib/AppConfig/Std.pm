@@ -24,7 +24,7 @@
 #
 #-----------------------------------------------------------------------
 #
-# $Id: Std.pm,v 1.5 2002/01/13 05:48:11 neilb Exp $
+# $Id: Std.pm,v 1.6 2002/03/06 08:24:34 neilb Exp $
 #
 #=======================================================================
 
@@ -36,7 +36,7 @@ use AppConfig;
 
 use vars qw(@ISA $VERSION);
 
-$VERSION = sprintf("%d.%02d", q$Revision: 1.5 $ =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q$Revision: 1.6 $ =~ /(\d+)\.(\d+)/);
 @ISA     = qw(AppConfig);
 
 #=======================================================================
@@ -132,7 +132,7 @@ __END__
 
 =head1 NAME
 
-AppConfig::Std - subclass of AppConfig which provides standard options
+AppConfig::Std - subclass of AppConfig that provides standard options
 
 =head1 SYNOPSIS
 
@@ -151,7 +151,7 @@ AppConfig::Std - subclass of AppConfig which provides standard options
 
 =head1 DESCRIPTION
 
-B<AppConfig::Std> is a Perl module which provides a set of
+B<AppConfig::Std> is a Perl module that provides a set of
 standard configuration variables and command-line switches.
 It is implemented as a subclass of AppConfig; AppConfig provides
 a general mechanism for handling global configuration variables.
@@ -207,7 +207,7 @@ This assumes that you have defined C<$VERSION> in your script
 with something like the following:
 
     use vars qw( $VERSION );
-    $VERSION = sprintf("%d.%02d", q$Revision: 1.5 $ =~ /(\d+)\.(\d+)/);
+    $VERSION = sprintf("%d.%02d", q$Revision: 1.6 $ =~ /(\d+)\.(\d+)/);
 
 The script will exit with an exit value of 0.
 
@@ -248,7 +248,7 @@ Kinda of a h2xs for scripts.
 
 =head1 EXAMPLE
 
-The following is the outline of a simple script which illustrates
+The following is the outline of a simple script that illustrates
 use of the AppConfig::Std module:
 
     #!/usr/bin/perl -w
@@ -298,13 +298,13 @@ Available from CPAN as part of the PodParser distribution:
 
 =item perlpod
 
-Documentation from the perl distribution which describes
+Documentation from the perl distribution that describes
 the pod format.
 
 =item pod2man
 
-Particularly the section in the documentation titled
-I<Anatomy of a Proper Man Page>.
+Particularly the NOTES section in the documentation
+which describes the sections you should include in your documentation.
 AppConfig::Std uses Pod::Usage, which assumes well-formed pod.
 
 =back

@@ -1,7 +1,16 @@
 
 				ChangeLog
 
-1.5 neilb 19-jan-2002
+1.06 neilb 09-mar-2002
+
+	The testsuite was try to invoke perl on the test script,
+	which fails if you install the binary as something other
+	than "perl". Changed "perl" to "$^X". Also invoked perl
+	with -Iblib/lib when running the test, so that it actually
+	pulls in the version you think you're testing :-)
+	Thanks to Ed Santiago for both of these.
+
+1.05 neilb 19-jan-2002
 
 	Added a basic test-suite. Tests all switches apart
 	from -help. The test-suite works by comparing the
@@ -11,20 +20,20 @@
 	perldoc to format the output), so the comparison
 	is likely to fail.
 
-1.4 neilb 15-jan-2002
+1.04 neilb 15-jan-2002
 
 	Updated call to pod2usage() - the API has changed.
 
 	Minor improvements to documentation.
 
-1.3 neilb 26-feb-2001
+1.03 neilb 26-feb-2001
 
 	Tied up the documentation; eg updated references to CPAN.
 
 	Added a -verbose switch - found I was adding one of these
 	to just about all of my scripts.
 
-1.2 neilb 09-december-1998
+1.02 neilb 09-december-1998
 
 	First version of module. Created from previous module App::StdConfig.
 
