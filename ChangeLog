@@ -1,0 +1,14 @@
+
+				ChangeLog
+
+1.3 neilb 26-feb-2001
+
+	Tied up the documentation; eg updated references to CPAN.
+
+	Added a -verbose switch - found I was adding one of these
+	to just about all of my scripts.
+
+1.2 neilb 09-december-1998
+
+	First version of module. Created from previous module App::StdConfig.
+
