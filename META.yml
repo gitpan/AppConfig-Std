@@ -1,0 +1,25 @@
+---
+abstract: unknown
+author:
+  - 'Neil Bowers <neil@bowers.com>'
+build_requires:
+  ExtUtils::MakeMaker: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.68, CPAN::Meta::Converter version 2.131560'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: AppConfig-Std
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  AppConfig: 1.52
+  Pod::Usage: 1.14
+resources:
+  repository: https://github.com/neilbowers/AppConfig-Std
+version: 1.08

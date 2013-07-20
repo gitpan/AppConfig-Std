@@ -2,8 +2,10 @@ lib/AppConfig/Std.pm
 Makefile.PL
 README
 MANIFEST
-ChangeLog
+Changes
 t/basic.t
 t/testscript.pl
 t/getopt.t
 t/getscript.pl
+META.yml                                 Module YAML meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)

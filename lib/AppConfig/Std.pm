@@ -18,13 +18,9 @@
 #
 # Written by Neil Bowers <neil@bowers.com>
 #
-# Copyright (C) 2002 Neil Bowers.
+# Copyright (C) 2002-2013 Neil Bowers.
 # Copyright (C) 1998-2001 Canon Research Centre Europe Ltd.
 # All Rights Reserved.
-#
-#-----------------------------------------------------------------------
-#
-# $Id: Std.pm,v 1.7 2002/07/02 18:18:37 neilb Exp $
 #
 #=======================================================================
 
@@ -36,7 +32,7 @@ use AppConfig;
 
 use vars qw(@ISA $VERSION);
 
-$VERSION = sprintf("%d.%02d", q$Revision: 1.7 $ =~ /(\d+)\.(\d+)/);
+$VERSION = '1.08';
 @ISA     = qw(AppConfig);
 
 #=======================================================================
@@ -362,13 +358,17 @@ AppConfig::Std uses Pod::Usage, which assumes well-formed pod.
 
 =back
 
+=head1 REPOSITORY
+
+L<https://github.com/neilbowers/AppConfig-Std>
+
 =head1 AUTHOR
 
 Neil Bowers E<lt>neil@bowers.comE<gt>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2002 Neil Bowers.
+Copyright (c) 2002-2013 Neil Bowers.
 
 Copyright (c) 1998-2001 Canon Research Centre Europe. All rights reserved.
 

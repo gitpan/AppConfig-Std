@@ -5,8 +5,6 @@
 # Author:       Neil Bowers
 # Created:      9 December 1998
 #
-# $Id: Makefile.PL,v 1.2 2002/01/13 05:51:13 neilb Exp $
-#
 
 use ExtUtils::MakeMaker;
 
@@ -21,5 +19,13 @@ use ExtUtils::MakeMaker;
                                  },
 		AUTHOR		=> 'Neil Bowers <neil@bowers.com>',
 		dist		=> {COMPRESS => 'gzip', SUFFIX => 'gz'},
+
+        META_MERGE => {
+            resources => {
+                repository => 'https://github.com/neilbowers/AppConfig-Std',
+            },
+        },
+        LICENSE      => 'perl',
+
 		);
 
