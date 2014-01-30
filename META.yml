@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 0
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.68, CPAN::Meta::Converter version 2.131560'
+generated_by: 'ExtUtils::MakeMaker version 6.86, CPAN::Meta::Converter version 2.133380'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -20,6 +20,7 @@ no_index:
 requires:
   AppConfig: 1.52
   Pod::Usage: 1.14
+  perl: 5.006
 resources:
   repository: https://github.com/neilbowers/AppConfig-Std
-version: 1.08
+version: 1.09

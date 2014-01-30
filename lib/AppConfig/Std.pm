@@ -25,14 +25,16 @@
 #=======================================================================
 
 package AppConfig::Std;
+use 5.006;
 use strict;
+use warnings;
 
 use AppConfig;
 # we also make use of Pod::Usage, but require it if needed
 
 use vars qw(@ISA $VERSION);
 
-$VERSION = '1.08';
+$VERSION = '1.09';
 @ISA     = qw(AppConfig);
 
 #=======================================================================
